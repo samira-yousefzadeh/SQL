@@ -24,3 +24,14 @@ CREATE TABLE Course (
     Credits INT CHECK (Credits BETWEEN 1 AND 6), -- Number of credits (1-6)
     Department NVARCHAR(100)                   -- Department offering the course
 );
+
+-- Enrollment Table: Links students and courses (Many-to-Many relationship)
+CREATE TABLE Enrollment (
+    EnrID INT PRIMARY KEY IDENTITY(1,1),       -- Unique enrollment record
+    StdID INT,                                  -- Student ID (Foreign Key)
+    CourseID INT,                               -- Course ID (Foreign Key)
+    EnrollmentDate DATE DEFAULT GETDATE(),      -- Date of enrollment
+    Grade NVARCHAR(2),                          -- Student's grade in the course
+    FOREIGN KEY (StdID) REFERENCES Student(StdID) ON DELETE CASCADE, -- If student is deleted, remove their enrollments
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON DELETE CASCADE -- If course is deleted, remove enrollments
+);
