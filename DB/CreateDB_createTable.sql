@@ -46,3 +46,12 @@ CREATE TABLE Professor (
     Department NVARCHAR(100),                  -- Department where professor teaches
     HireDate DATE DEFAULT GETDATE()            -- Date professor was hired
 );
+
+-- Department Table: Stores university departments
+CREATE TABLE Department (
+    DepID INT PRIMARY KEY IDENTITY(1,1),      -- Unique department identifier
+    DepartmentName NVARCHAR(100) UNIQUE NOT NULL, -- Name of the department
+    HeadOfDepartment INT,                      -- ID of the department head (Professor)
+    FOREIGN KEY (HeadOfDepartment) REFERENCES Professor(PrID) ON DELETE SET NULL -- If professor is removed, set to NULL
+);
+
