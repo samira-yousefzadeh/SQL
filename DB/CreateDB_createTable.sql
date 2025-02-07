@@ -35,3 +35,14 @@ CREATE TABLE Enrollment (
     FOREIGN KEY (StdID) REFERENCES Student(StdID) ON DELETE CASCADE, -- If student is deleted, remove their enrollments
     FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON DELETE CASCADE -- If course is deleted, remove enrollments
 );
+
+-- Professor Table: Stores professor details
+CREATE TABLE Professor (
+    PrID INT PRIMARY KEY IDENTITY(1,1),       -- Unique professor identifier
+    FirstName NVARCHAR(50) NOT NULL,           -- Professor's first name
+    LastName NVARCHAR(50) NOT NULL,            -- Professor's last name
+    Email NVARCHAR(100) UNIQUE,                -- Unique professor email
+    PhoneNumber NVARCHAR(15),                  -- Professor's phone number
+    Department NVARCHAR(100),                  -- Department where professor teaches
+    HireDate DATE DEFAULT GETDATE()            -- Date professor was hired
+);
