@@ -62,3 +62,15 @@ CREATE TABLE Classroom (
     Building NVARCHAR(50),                     -- Building where the classroom is located
     Capacity INT CHECK (Capacity > 0)          -- Maximum capacity of the classroom
 );
+
+-- Assignment Table: Links professors, courses, and classrooms
+CREATE TABLE Assignment (
+    AssignID INT PRIMARY KEY IDENTITY(1,1),   -- Unique assignment record
+    PrID INT,                                  -- Professor assigned to the course
+    CourseID INT,                              -- Course being assigned
+    ClsID INT,                                 -- Classroom where the course is conducted
+    Schedule NVARCHAR(50),                     -- Course schedule (e.g., Mon-Wed 10:00-11:30 AM)
+    FOREIGN KEY (PrID) REFERENCES Professor(PrID) ON DELETE CASCADE, -- If professor leaves, delete assignments
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON DELETE CASCADE, -- If course is removed, delete assignments
+    FOREIGN KEY (ClsID) REFERENCES Classroom(ClsID) ON DELETE SET NULL -- If classroom is removed, set to NULL
+);
