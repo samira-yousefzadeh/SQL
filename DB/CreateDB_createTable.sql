@@ -55,3 +55,10 @@ CREATE TABLE Department (
     FOREIGN KEY (HeadOfDepartment) REFERENCES Professor(PrID) ON DELETE SET NULL -- If professor is removed, set to NULL
 );
 
+-- Classroom Table: Stores classroom details
+CREATE TABLE Classroom (
+    ClsID INT PRIMARY KEY IDENTITY(1,1),      -- Unique classroom identifier
+    RoomNumber NVARCHAR(10) NOT NULL,          -- Classroom room number
+    Building NVARCHAR(50),                     -- Building where the classroom is located
+    Capacity INT CHECK (Capacity > 0)          -- Maximum capacity of the classroom
+);
