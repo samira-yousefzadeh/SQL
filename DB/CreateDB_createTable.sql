@@ -2,6 +2,13 @@
 /*CREATE DATABASE University;*/
 USE University;
 
+--Faculty Table: Creates faculty table to store each faculty info
+CREATE TABLE Faculty (
+    FacultyID int PRIMARY KEY IDENTITY(1,1),
+    FacultyName NVARCHAR(50) NOT NULL,
+    FacultyDescription NVARCHAR(100) not NULL
+
+);
 
 -- Student Table: Creates student table to store each student info
 CREATE TABLE Student (
