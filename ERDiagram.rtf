@@ -1,0 +1,102 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red70\green137\blue204;\red0\green0\blue0;\red202\green202\blue202;
+\red167\green197\blue152;\red212\green212\blue212;\red79\green123\blue61;}
+{\*\expandedcolortbl;;\cssrgb\c33725\c61176\c83922;\cssrgb\c0\c0\c0;\cssrgb\c83137\c83137\c83137;
+\cssrgb\c70980\c80784\c65882;\cssrgb\c86275\c86275\c86275;\cssrgb\c37647\c54510\c30588;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Table\cf4 \strokec4  Building \{\
+    BuildingID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    Address \cf2 \strokec2 TEXT\cf4 \strokec4 \
+    NumberOfRooms \cf2 \strokec2 INT\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Faculty \{\
+    FacultyID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    FacultyName \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+    Description \cf2 \strokec2 TEXT\cf4 \strokec4 \
+    BuildingID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Building\cf6 \strokec6 .\cf4 \strokec4 BuildingID]  \cf7 \strokec7 // Faculty is linked to a Building\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Department \{\
+    DepID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    FacultyID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Faculty\cf6 \strokec6 .\cf4 \strokec4 FacultyID]\
+    DepartmentName \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Course \{\
+    CourseID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    DepID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Department\cf6 \strokec6 .\cf4 \strokec4 DepID]\
+    CourseName \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Unit \{\
+    UnitID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    UnitName \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  CourseUnit \{\
+    CourseID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Course\cf6 \strokec6 .\cf4 \strokec4 CourseID\cf6 \strokec6 ,\cf4 \strokec4  primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    UnitID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Unit\cf6 \strokec6 .\cf4 \strokec4 UnitID\cf6 \strokec6 ,\cf4 \strokec4  primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Staff \{\
+    StaffID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    DepID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Department\cf6 \strokec6 .\cf4 \strokec4 DepID]\
+    StaffName \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Student \{\
+    StudentID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    Gender \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 10\cf4 \strokec4 )\
+    Name \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+    Family \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 100\cf4 \strokec4 )\
+    Address \cf2 \strokec2 TEXT\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Enrollment \{\
+    EnrollID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    StudentID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Student\cf6 \strokec6 .\cf4 \strokec4 StudentID]\
+    EnrollDate \cf2 \strokec2 DATE\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  EnrollmentDetail \{\
+    EnrollDetailID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    EnrollID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Enrollment\cf6 \strokec6 .\cf4 \strokec4 EnrollID]\
+    StaffID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Staff\cf6 \strokec6 .\cf4 \strokec4 StaffID]\
+    UnitID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Unit\cf6 \strokec6 .\cf4 \strokec4 UnitID]\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Grade \{\
+    GradeID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    EnrollID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Enrollment\cf6 \strokec6 .\cf4 \strokec4 EnrollID]\
+    Mark \cf2 \strokec2 DECIMAL\cf4 \strokec4 (\cf5 \strokec5 5\cf6 \strokec6 ,\cf5 \strokec5 2\cf4 \strokec4 )\
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  StudentPayment \{\
+    PaymentID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    StudentID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Student\cf6 \strokec6 .\cf4 \strokec4 StudentID]\
+    EnrollID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Enrollment\cf6 \strokec6 .\cf4 \strokec4 EnrollID]\
+    AmountPaid \cf2 \strokec2 DECIMAL\cf4 \strokec4 (\cf5 \strokec5 10\cf6 \strokec6 ,\cf5 \strokec5 2\cf4 \strokec4 )\
+    PaymentDate \cf2 \strokec2 DATE\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  StudentDebt \{\
+    DebtID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    StudentID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Student\cf6 \strokec6 .\cf4 \strokec4 StudentID]\
+    AmountOwed \cf2 \strokec2 DECIMAL\cf4 \strokec4 (\cf5 \strokec5 10\cf6 \strokec6 ,\cf5 \strokec5 2\cf4 \strokec4 )\
+    DueDate \cf2 \strokec2 DATE\cf4 \strokec4 \
+    Status \cf2 \strokec2 VARCHAR\cf4 \strokec4 (\cf5 \strokec5 20\cf4 \strokec4 ) \cf7 \strokec7 // Pending, Paid, Overdue\cf4 \strokec4 \
+\}\
+\
+\cf2 \strokec2 Table\cf4 \strokec4  Room \{\
+    RoomID \cf2 \strokec2 INT\cf4 \strokec4  [primary \cf2 \strokec2 key\cf4 \strokec4 ]\
+    BuildingID \cf2 \strokec2 INT\cf4 \strokec4  [\cf2 \strokec2 ref\cf6 \strokec6 :\cf4 \strokec4  > Building\cf6 \strokec6 .\cf4 \strokec4 BuildingID]\
+    RoomNumber \cf2 \strokec2 INT\cf4 \strokec4 \
+    Facilities \cf2 \strokec2 TEXT\cf4 \strokec4 \
+\}\
+}
