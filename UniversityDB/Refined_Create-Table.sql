@@ -51,3 +51,24 @@ CREATE TABLE CourseUnit (
     UnitID INT FOREIGN KEY REFERENCES Unit(UnitID),
     PRIMARY KEY (CourseID, UnitID)
 );
+
+
+
+CREATE TABLE Enrollment (
+    EnrollID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT FOREIGN KEY REFERENCES Student(StudentID),
+    EnrollDate DATE
+);
+
+CREATE TABLE EnrollmentDetail (
+    EnrollDetailID INT IDENTITY(1,1) PRIMARY KEY,
+    EnrollID INT FOREIGN KEY REFERENCES Enrollment(EnrollID),
+    StaffID INT FOREIGN KEY REFERENCES Staff(StaffID),
+    UnitID INT FOREIGN KEY REFERENCES Unit(UnitID)
+);
+
+CREATE TABLE Grade (
+    GradeID INT IDENTITY(1,1) PRIMARY KEY,
+    EnrollID INT FOREIGN KEY REFERENCES Enrollment(EnrollID),
+    Mark DECIMAL(5,2)
+);
