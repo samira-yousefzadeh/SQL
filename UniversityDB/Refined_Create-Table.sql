@@ -72,3 +72,4 @@ CREATE TABLE Grade (
     EnrollID INT FOREIGN KEY REFERENCES Enrollment(EnrollID),
     Mark DECIMAL(5,2)
 );
+
