@@ -73,3 +73,28 @@ CREATE TABLE Grade (
     Mark DECIMAL(5,2)
 );
 
+
+
+CREATE TABLE StudentPayment (
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT FOREIGN KEY REFERENCES Student(StudentID),
+    EnrollID INT FOREIGN KEY REFERENCES Enrollment(EnrollID),
+    AmountPaid DECIMAL(10,2),
+    PaymentDate DATE
+);
+
+CREATE TABLE StudentDebt (
+    DebtID INT IDENTITY(1,1) PRIMARY KEY,
+    StudentID INT FOREIGN KEY REFERENCES Student(StudentID),
+    AmountOwed DECIMAL(10,2),
+    DueDate DATE,
+    Status VARCHAR(20) -- Pending, Paid, Overdue
+);
+
+CREATE TABLE Room (
+    RoomID INT IDENTITY(1,1) PRIMARY KEY,
+    BuildingID INT FOREIGN KEY REFERENCES Building(BuildingID),
+    RoomNumber INT,
+    Facilities TEXT
+);
+
