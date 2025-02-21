@@ -26,3 +26,4 @@ SET FOREIGN_KEY_CHECKS = 0;  -- Disable foreign key checks
 DROP TABLE Faculty, Department, Course, Unit, CourseUnit, Staff, Student, Enrollment, EnrollmentDetail, Grade, StudentPayment, StudentDebt, Building, Room, StudentRoomAssignment;
 SET FOREIGN_KEY_CHECKS = 1;  -- Re-enable foreign key checks
 */
+delete from Building
