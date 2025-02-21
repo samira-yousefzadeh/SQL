@@ -1,0 +1,11 @@
+-- alter table Building
+-- Rename COLUMN Address to BuildingLocation;
+
+-- ALTER TABLE Building RENAME COLUMN Address TO BuildingLocation;
+
+-- ALTER TABLE Building CHANGE Address BuildingLocation TEXT;
+
+EXEC sp_rename 'Building.Address', 'BuildingLocation', 'COLUMN';
+alter table Building 
+add BuildingName NVARCHAR(50),
+Campus NVARCHAR(30);
