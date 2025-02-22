@@ -9,3 +9,10 @@ EXEC sp_rename 'Building.Address', 'BuildingLocation', 'COLUMN';
 alter table Building 
 add BuildingName NVARCHAR(50),
 Campus NVARCHAR(30);
+
+--Reseed
+DBCC CHECKIDENT ('Faculty', RESEED, 0);
+--Reseed Building
+DBCC CHECKIDENT('Building',RESEED,0);
+delete from Building
+select * from building
