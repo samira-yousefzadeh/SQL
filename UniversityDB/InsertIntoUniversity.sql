@@ -82,3 +82,36 @@ INSERT INTO Staff (DepID, StaffName) VALUES
 (4,'Dr Lucy Sheppard-Marks'),
 (19,'Dr Phillipa Gillingham'),
 (8,'Dr Shelley Ellis');
+
+-- Insert into Course
+INSERT INTO Course (DepID, CourseName) VALUES
+(4, 'Data Structures'),
+(4, 'Artificial Intelligence'),
+(1, 'Corporate Finance'),
+(5, 'Microbiology'),
+(12, 'Photography')
+
+select * from Department
+
+-- Insert into Unit
+INSERT INTO Unit (UnitName) VALUES
+('Introduction to Programming'),
+('Machine Learning'),
+('Investment Strategies'),
+('Genetics'),
+('Digital Art');
+
+-- Insert into CourseUnit (linking Courses & Units)
+INSERT INTO CourseUnit (CourseID, UnitID) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+
+insert into Gender(GenderTitle) VALUES
+('Female'),
+('Male');
+
+select * from Gender

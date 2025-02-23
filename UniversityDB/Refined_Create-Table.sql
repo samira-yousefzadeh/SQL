@@ -34,6 +34,10 @@ CREATE TABLE Student (
     Address TEXT
 );
 
+create table Gender(
+    GenderID int IDENTITY(1,1) PRIMARY KEY,
+    GenderTitle nvarchar(10)
+);
 
 CREATE TABLE Course (
     CourseID INT IDENTITY(1,1) PRIMARY KEY,
