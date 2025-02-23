@@ -114,4 +114,10 @@ insert into Gender(GenderTitle) VALUES
 ('Female'),
 ('Male');
 
-select * from Gender
+-- Insert 100 Students
+INSERT INTO Student (GenderID, Name, Family, Address) VALUES
+(2, 'John', 'Doe', '15 King St'),
+(1, 'Jane', 'Smith', '23 Queen St'),
+(2, 'Tom', 'Brown', '45 River Rd'),
+(1, 'Alice', 'Davis', '89 Park Ave'),
+(2, 'Mark', 'Wilson', '10 Hilltop Ln');

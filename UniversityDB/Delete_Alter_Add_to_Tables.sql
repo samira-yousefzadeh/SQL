@@ -5,6 +5,7 @@
 
 -- ALTER TABLE Building CHANGE Address BuildingLocation TEXT;
 
+
 EXEC sp_rename 'Building.Address', 'BuildingLocation', 'COLUMN';
 alter table Building 
 add BuildingName NVARCHAR(50),
@@ -23,3 +24,11 @@ DBCC CHECKIDENT('Department',RESEED,0);
 dbcc checkident('Department',reseed,0);
 delete from Department
 select * from Department
+
+-- Alter student to connect it to Gender Table
+ALTER TABLE Student drop COLUMN GenderID;
+ALTER TABLE Student 
+ADD GenderID INT;
+
+ALTER TABLE Student 
+ADD CONSTRAINT FK_Student_Gender FOREIGN KEY (GenderID) REFERENCES Gender(GenderID);
