@@ -21,7 +21,6 @@ select * from building
 --Reseed Department
 --Reseed Building
 DBCC CHECKIDENT('Department',RESEED,0);
-dbcc checkident('Department',reseed,0);
 delete from Department
 select * from Department
 
@@ -32,3 +31,12 @@ ADD GenderID INT;
 
 ALTER TABLE Student 
 ADD CONSTRAINT FK_Student_Gender FOREIGN KEY (GenderID) REFERENCES Gender(GenderID);
+
+--Alter Student table
+alter table Student
+add StdPostcode NVARCHAR(10),
+    StdPhoneNumber NVARCHAR(14);
+SELECT * FROM Student
+
+TRUNCATE TABLE Student
+DBCC checkIdent('Student',RESEED,0)
