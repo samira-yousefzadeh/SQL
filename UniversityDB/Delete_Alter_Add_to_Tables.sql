@@ -38,5 +38,5 @@ add StdPostcode NVARCHAR(10),
     StdPhoneNumber NVARCHAR(14);
 SELECT * FROM Student
 
-TRUNCATE TABLE Student
+DELETE FROM  Student
 DBCC checkIdent('Student',RESEED,0)
